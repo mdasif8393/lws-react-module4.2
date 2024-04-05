@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import createConnection from "../utils/connection";
+import createConnection, { logVisit } from "../utils/connection";
 
-const serverUrl = "https://localhost:1234";
+// const serverUrl = "https://localhost:1234";
 
-export default function ChatRoom({ roomId }) {
+export default function ChatRoom({ roomId, serverUrl }) {
   // console.log("rendering...");
   useEffect(() => {
     // synchoronize with external chat server
@@ -17,6 +18,10 @@ export default function ChatRoom({ roomId }) {
       // connection.disconnect();
     };
   }, [roomId, serverUrl]);
+
+  useEffect(() => {
+    logVisit(roomId);
+  }, [roomId]);
 
   return <h1>Welcome to the {roomId} room!</h1>;
 }

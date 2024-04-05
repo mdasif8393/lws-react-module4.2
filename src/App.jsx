@@ -4,6 +4,7 @@ import ChatRoom from "./components/ChatRoom";
 export default function App() {
   const [roomId, setRoomId] = useState("general");
   const [showChat, setShowChat] = useState(true);
+  const [serverUrl, setServerUrl] = useState("https://localhost:1234");
 
   const handleRoomChange = (e) => {
     setRoomId(e.target.value);
@@ -11,6 +12,16 @@ export default function App() {
 
   return (
     <div>
+      <div>
+        <input
+          type="text"
+          name=""
+          id=""
+          value={serverUrl}
+          onChange={(e) => setServerUrl(e.target.value)}
+        />
+      </div>
+      <br />
       <div>
         <button onClick={() => setShowChat((s) => !s)}>
           {showChat ? "Hide Chat Room" : "Show Chat Room"}
@@ -28,7 +39,7 @@ export default function App() {
             </select>
           </div>
 
-          <ChatRoom roomId={roomId} />
+          <ChatRoom roomId={roomId} serverUrl={serverUrl} />
         </>
       )}
     </div>
