@@ -1,18 +1,23 @@
 import { useState } from "react";
 import ChatRoom from "./components/ChatRoom";
+import { SettingsContext } from "./contexts/settings";
 
 export default function App() {
   const [roomId, setRoomId] = useState("general");
   const [showChat, setShowChat] = useState(true);
-  const [serverUrl, setServerUrl] = useState("https://localhost:1234");
+  const [serverUrl, setServerUrl] = useState(null);
 
   const handleRoomChange = (e) => {
     setRoomId(e.target.value);
   };
 
+  const handleServerChange = (e) => {
+    setServerUrl(e.target.value);
+  };
+
   return (
     <div>
-      <div>
+      {/* <div>
         <input
           type="text"
           name=""
@@ -20,6 +25,14 @@ export default function App() {
           value={serverUrl}
           onChange={(e) => setServerUrl(e.target.value)}
         />
+      </div> */}
+      <div>
+        Select Server:{" "}
+        <select onChange={handleServerChange}>
+          <option value="http://hocalhost1234">Server 1</option>
+          <option value="http://hocalhost12345">Server 2</option>
+          <option value="http://hocalhost12356">Server 3</option>
+        </select>
       </div>
       <br />
       <div>
@@ -39,7 +52,13 @@ export default function App() {
             </select>
           </div>
 
-          <ChatRoom roomId={roomId} serverUrl={serverUrl} />
+          <SettingsContext.Provider
+            value={{
+              defaultServerUrl: "http://localhost:1000",
+            }}
+          >
+            <ChatRoom roomId={roomId} selectedServerUrl={serverUrl} />
+          </SettingsContext.Provider>
         </>
       )}
     </div>
