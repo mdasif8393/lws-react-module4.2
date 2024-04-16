@@ -1,9 +1,11 @@
-import Timer from "./components/Timer";
+import SaveButton from "./components/SaveButton";
+import StatusBar from "./components/StatusBar";
 
 export default function App() {
   return (
     <div>
-      <Timer />
+      <StatusBar />
+      <SaveButton />
     </div>
   );
 }

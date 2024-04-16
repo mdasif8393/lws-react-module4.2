@@ -13,7 +13,6 @@ export default function Timer() {
   });
 
   useEffect(() => {
-    console.log("Hello");
     const timerId = setInterval(onTick, 1000);
 
     return () => clearInterval(timerId);
