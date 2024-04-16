@@ -1,3 +1,4 @@
+import Form from "./components/Form";
 import SaveButton from "./components/SaveButton";
 import StatusBar from "./components/StatusBar";
 
@@ -6,6 +7,9 @@ export default function App() {
     <div>
       <StatusBar />
       <SaveButton />
+      <br />
+      <br />
+      <Form />
     </div>
   );
 }
